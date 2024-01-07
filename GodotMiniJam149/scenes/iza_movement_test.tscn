@@ -1,29 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg5my20g465sw"]
+[gd_scene load_steps=7 format=3 uid="uid://dg5my20g465sw"]
 
-[ext_resource type="PackedScene" path="res://prefabs/mail_man.tscn" id="1_0rvww"]
+[ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_0rvww"]
+[ext_resource type="Script" path="res://scripts/iza_movement_test.gd" id="1_abhsr"]
+[ext_resource type="PackedScene" uid="uid://jfak7q8pofme" path="res://prefabs/pause_menu.tscn" id="3_iy34a"]
+
+[sub_resource type="GDScript" id="GDScript_7fcrv"]
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lwmqq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xx27u"]
 size = Vector3(1.995, 0.03, 1.985)
 
-[node name="Node3D" type="Node3D"]
+[node name="GameManager" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_abhsr")
 
-[node name="Ground" type="StaticBody3D" parent="."]
+[node name="Pauseable" type="Node3D" parent="."]
+process_mode = 1
+script = SubResource("GDScript_7fcrv")
+
+[node name="Ground" type="StaticBody3D" parent="Pauseable"]
 transform = Transform3D(8.4885, 0, 0, 0, 0.997468, 0, 0, 0, 8.4885, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pauseable/Ground"]
 mesh = SubResource("PlaneMesh_lwmqq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pauseable/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015, 0)
 shape = SubResource("BoxShape3D_xx27u")
 
-[node name="MailMan" parent="." instance=ExtResource("1_0rvww")]
+[node name="MailMan" parent="Pauseable" instance=ExtResource("1_0rvww")]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="Pauseable"]
 transform = Transform3D(1, 0, 0, 0, 0.75215, 0.658991, 0, -0.658991, 0.75215, 0, 7.54925, 7.55482)
 projection = 1
 fov = 10.0
 size = 9.205
 far = 1000.0
+
+[node name="Pause Menu" parent="." instance=ExtResource("3_iy34a")]
+visible = false
