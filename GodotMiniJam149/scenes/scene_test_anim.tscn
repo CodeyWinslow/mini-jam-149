@@ -3,11 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://m2hejuykv6fm" path="res://prefabs/anim_mannequin.tscn" id="1_tpiy5"]
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="2_2wmc8"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_n22mi"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fo4yv"]
-size = Vector3(1.995, 0.03, 1.985)
-
 [sub_resource type="Animation" id="Animation_kw62p"]
 resource_name = "Base_ArmatureAction"
 length = 0.001
@@ -195,25 +190,23 @@ nodes/Locomotion/position = Vector2(-80, 220)
 nodes/output/position = Vector2(160, 220)
 node_connections = [&"Locomotion", 0, &"Animation 2", &"Locomotion", 1, &"Animation 3", &"output", 0, &"Locomotion"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_n22mi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fo4yv"]
+size = Vector3(1.995, 0.03, 1.985)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -2.12754e-08, 1.72217e-07, -1.09087e-07, 0.694747, 0.719255, -1.34949e-07, -0.719255, 0.694747, -0.327098, 10.4083, 8.8101)
 projection = 1
 size = 11.06
-
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(8.488, 0, 0, 0, 8.488, 0, 0, 0, 8.488, 0, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = SubResource("PlaneMesh_n22mi")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015, 0)
-shape = SubResource("BoxShape3D_fo4yv")
+near = 0.104
+far = 312.37
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.840859, -0.464061, -0.278575, 0.0415174, -0.568468, 0.821657, -0.53966, 0.679332, 0.497268, -0.277671, -3.04951, -0.526157)
+shadow_enabled = true
 
 [node name="AnimMannequin_Idle" parent="." instance=ExtResource("1_tpiy5")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.48553, 0, -5.1389)
@@ -229,10 +222,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.818
 
 [node name="Skeleton3D" parent="BlendAnimController/AnimMannequin_Blend/MailMan/Base_Armature" index="0"]
 bones/2/rotation = Quaternion(-0.543858, -0.485362, 0.455817, 0.510757)
-bones/4/rotation = Quaternion(0.72853, 0.000152148, 0.00285378, 0.685008)
-bones/5/rotation = Quaternion(-0.127464, -0.00331495, -0.00347275, 0.991832)
-bones/8/rotation = Quaternion(-0.240657, 0.155763, 0.0391069, 0.957232)
-bones/11/rotation = Quaternion(-0.247113, -0.155556, -0.0399153, 0.955586)
+bones/4/rotation = Quaternion(0.728526, 0.00231825, 0.00489047, 0.684997)
+bones/5/rotation = Quaternion(-0.120109, -0.00332015, -0.0034717, 0.992749)
+bones/8/rotation = Quaternion(-0.23496, 0.15594, 0.0383932, 0.958646)
+bones/11/rotation = Quaternion(-0.238592, -0.155828, -0.0388482, 0.957749)
 bones/14/rotation = Quaternion(-0.544575, 0.484557, -0.455062, 0.511431)
 
 [node name="AnimationTree" type="AnimationTree" parent="BlendAnimController"]
@@ -245,7 +238,19 @@ anim_player = NodePath("../AnimMannequin_Blend/MailMan/AnimationPlayer")
 parameters/Locomotion/blend_amount = 0.0
 
 [node name="MailMan" parent="." instance=ExtResource("2_2wmc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49126, -1.19209e-07, -0.274579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0111282, -5.96046e-07, 2.35061)
+
+[node name="Env" type="Node3D" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="Env"]
+transform = Transform3D(8.488, 0, 0, 0, 8.488, 0, 0, 0, 8.488, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Ground"]
+mesh = SubResource("PlaneMesh_n22mi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015, 0)
+shape = SubResource("BoxShape3D_fo4yv")
 
 [editable path="BlendAnimController/AnimMannequin_Blend"]
 [editable path="BlendAnimController/AnimMannequin_Blend/MailMan"]
