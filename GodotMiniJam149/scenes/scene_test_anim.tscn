@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://m2hejuykv6fm" path="res://prefabs/anim_mannequin.tscn" id="1_tpiy5"]
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="2_2wmc8"]
 
-[sub_resource type="Animation" id="Animation_kw62p"]
+[sub_resource type="Animation" id="Animation_m1t54"]
 resource_name = "Base_ArmatureAction"
 length = 0.001
 tracks/0/type = "position_3d"
@@ -56,7 +56,7 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = PackedFloat32Array(0, 1, -0.544575, 0.484557, -0.455062, 0.511431)
 
-[sub_resource type="Animation" id="Animation_nipy2"]
+[sub_resource type="Animation" id="Animation_ntqv4"]
 resource_name = "Idle"
 length = 2.5
 loop_mode = 1
@@ -110,7 +110,7 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = PackedFloat32Array(0, 1, -0.544575, 0.484557, -0.455062, 0.511431)
 
-[sub_resource type="Animation" id="Animation_eokr4"]
+[sub_resource type="Animation" id="Animation_effyl"]
 resource_name = "Run"
 length = 0.833333
 loop_mode = 1
@@ -164,11 +164,11 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = PackedFloat32Array(0, 1, -0.539533, 0.480071, -0.459792, 0.516747, 0.0333333, 1, -0.578213, 0.514488, -0.420927, 0.473068, 0.0666667, 1, -0.61092, 0.54359, -0.382605, 0.429999, 0.1, 1, -0.637653, 0.567376, -0.346355, 0.389259, 0.133333, 1, -0.658505, 0.58593, -0.313948, 0.352838, 0.166667, 1, -0.673652, 0.599407, -0.287381, 0.32298, 0.2, 1, -0.679897, 0.604964, -0.27549, 0.309617, 0.233333, 1, -0.677613, 0.602931, -0.279912, 0.314586, 0.266667, 1, -0.667969, 0.594351, -0.297698, 0.334575, 0.3, 1, -0.651319, 0.579536, -0.3256, 0.365933, 0.333333, 1, -0.627841, 0.558646, -0.360266, 0.404893, 0.4, 1, -0.565232, 0.502937, -0.434662, 0.488504, 0.433333, 1, -0.531183, 0.472641, -0.467427, 0.525327, 0.466667, 1, -0.497778, 0.442918, -0.495682, 0.557082, 0.5, 1, -0.466589, 0.415167, -0.519147, 0.583453, 0.533333, 1, -0.441287, 0.392653, -0.536377, 0.602818, 0.566667, 1, -0.422079, 0.375562, -0.54848, 0.616419, 0.6, 1, -0.410373, 0.365147, -0.555468, 0.624273, 0.633333, 1, -0.407735, 0.3628, -0.557004, 0.625999, 0.666667, 1, -0.415813, 0.369987, -0.552256, 0.620663, 0.7, 1, -0.434414, 0.386537, -0.540801, 0.607789, 0.733333, 1, -0.457406, 0.406996, -0.525577, 0.59068, 0.766667, 1, -0.483407, 0.430131, -0.506818, 0.569597, 0.8, 1, -0.511154, 0.45482, -0.484784, 0.544835, 0.833333, 1, -0.539533, 0.480071, -0.459792, 0.516747)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_s1e7l"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ixryw"]
 _data = {
-"Base_ArmatureAction": SubResource("Animation_kw62p"),
-"Idle": SubResource("Animation_nipy2"),
-"Run": SubResource("Animation_eokr4")
+"Base_ArmatureAction": SubResource("Animation_m1t54"),
+"Idle": SubResource("Animation_ntqv4"),
+"Run": SubResource("Animation_effyl")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pm1ts"]
@@ -222,16 +222,16 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.818
 
 [node name="Skeleton3D" parent="BlendAnimController/AnimMannequin_Blend/MailMan/Base_Armature" index="0"]
 bones/2/rotation = Quaternion(-0.543858, -0.485362, 0.455817, 0.510757)
-bones/4/rotation = Quaternion(0.728526, 0.00231825, 0.00489047, 0.684997)
-bones/5/rotation = Quaternion(-0.120109, -0.00332015, -0.0034717, 0.992749)
-bones/8/rotation = Quaternion(-0.23496, 0.15594, 0.0383932, 0.958646)
-bones/11/rotation = Quaternion(-0.238592, -0.155828, -0.0388482, 0.957749)
+bones/4/rotation = Quaternion(0.72852, 0.00375629, 0.00624258, 0.684986)
+bones/5/rotation = Quaternion(-0.115304, -0.00332345, -0.00347091, 0.993319)
+bones/8/rotation = Quaternion(-0.231237, 0.156053, 0.0379266, 0.959551)
+bones/11/rotation = Quaternion(-0.233019, -0.155999, -0.0381499, 0.95912)
 bones/14/rotation = Quaternion(-0.544575, 0.484557, -0.455062, 0.511431)
 
 [node name="AnimationTree" type="AnimationTree" parent="BlendAnimController"]
 root_node = NodePath("../AnimMannequin_Blend/MailMan")
 libraries = {
-"": SubResource("AnimationLibrary_s1e7l")
+"": SubResource("AnimationLibrary_ixryw")
 }
 tree_root = SubResource("AnimationNodeBlendTree_fgpkt")
 anim_player = NodePath("../AnimMannequin_Blend/MailMan/AnimationPlayer")
