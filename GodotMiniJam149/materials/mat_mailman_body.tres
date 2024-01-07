@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b2gutugvn5bui"]
 
-[ext_resource type="Texture2D" uid="uid://dwxc8njnqrjfc" path="res://art/character/Tex_MailMan_Body.png" id="1_3ecr2"]
+[ext_resource type="Texture2D" uid="uid://dwxc8njnqrjfc" path="res://textures/character/Tex_MailMan_Body.png" id="1_0ve67"]
 
 [resource]
-albedo_texture = ExtResource("1_3ecr2")
+albedo_texture = ExtResource("1_0ve67")

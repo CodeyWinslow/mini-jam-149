@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvpimmayao1oe"
-path="res://.godot/imported/Tex_MailMan_Outfit.png-cc7e86a6f000d9432fbeae30c1c76ffa.ctex"
+uid="uid://dwxc8njnqrjfc"
+path="res://.godot/imported/Tex_MailMan_Body.png-298069c13f85d1ae72993e830b1fe30b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/character/Tex_MailMan_Outfit.png"
-dest_files=["res://.godot/imported/Tex_MailMan_Outfit.png-cc7e86a6f000d9432fbeae30c1c76ffa.ctex"]
+source_file="res://textures/character/Tex_MailMan_Body.png"
+dest_files=["res://.godot/imported/Tex_MailMan_Body.png-298069c13f85d1ae72993e830b1fe30b.ctex"]
 
 [params]
 
