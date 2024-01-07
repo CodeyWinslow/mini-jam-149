@@ -52,6 +52,6 @@ shape = SubResource("BoxShape3D_fo4yv")
 transform = Transform3D(0.860835, -0.397101, -0.318234, 0.0415173, -0.568468, 0.821657, -0.507187, -0.720524, -0.472871, -0.277671, -3.04951, -0.526157)
 
 [node name="MailMan2" parent="." instance=ExtResource("3_d0qld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0116491, -4.76837e-07, 0.00819397)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02038, 0, 0.00949955)
 
 [editable path="MailMan"]
