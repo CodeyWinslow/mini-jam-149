@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqfn3hag2irjm"]
+
+[ext_resource type="Material" uid="uid://uvqytt3hcv0l" path="res://materials/test/blue.tres" id="1_36g5b"]
+[ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_kl3xy"]
+[ext_resource type="PackedScene" uid="uid://bv1vem7y3gxrm" path="res://prefabs/player_trigger.tscn" id="2_m6wnw"]
+[ext_resource type="PackedScene" uid="uid://c2ycvrkcl75ax" path="res://prefabs/static_box_prop.tscn" id="3_b282g"]
+[ext_resource type="Script" path="res://scripts/log_node.gd" id="3_gee3i"]
+[ext_resource type="PackedScene" uid="uid://308upmohh7m3" path="res://art/environment/Chute.blend" id="5_juqw3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a8wqf"]
+size = Vector3(14.5811, 4.65771, 1)
+
+[node name="SceneTestTriggers" type="Node3D"]
+
+[node name="Env" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Env"]
+transform = Transform3D(15.4154, 0, 0, 0, 1, 0, 0, 0, 15.4154, 0, -0.247498, -5.44582)
+use_collision = true
+size = Vector3(1, 0.505005, 1.70654)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78457, 0.428376, -4.11729)
+material_override = ExtResource("1_36g5b")
+use_collision = true
+size = Vector3(1.12451, 1.85675, 3.66358)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.72079, 0.420694, -1.57265)
+material_override = ExtResource("1_36g5b")
+use_collision = true
+size = Vector3(5.2489, 1.87585, 1.41479)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.69416, 0.0743961, -1.57265)
+material_override = ExtResource("1_36g5b")
+use_collision = true
+size = Vector3(2.36078, 1.18326, 1.41479)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.69416, 0.0743961, 2.06655)
+material_override = ExtResource("1_36g5b")
+use_collision = true
+size = Vector3(2.36078, 1.18326, 1.41479)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.32451, 3.35819, -5.43802)
+material_override = ExtResource("1_36g5b")
+use_collision = true
+size = Vector3(0.987732, 7.75084, 26.2378)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21402, 3.35819, -5.52908)
+material_override = ExtResource("1_36g5b")
+use_collision = true
+size = Vector3(0.987732, 7.75084, 26.4199)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.371171, 3.35969, -19.2533)
+material_override = ExtResource("1_36g5b")
+use_collision = true
+size = Vector3(25.0083, 7.75384, 1.89358)
+
+[node name="Chute2" parent="Env" instance=ExtResource("5_juqw3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.88474, 1.6297, -7.69774)
+
+[node name="Chute3" parent="Env" instance=ExtResource("5_juqw3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.288828, 1.62969, -7.69863)
+
+[node name="Chute4" parent="Env" instance=ExtResource("5_juqw3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.59237, 1.6297, -7.69774)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.81539)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.441858, 1.82886, 0.509612)
+shape = SubResource("BoxShape3D_a8wqf")
+
+[node name="StaticBoxProp" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29405, 0, -8.94056)
+
+[node name="StaticBoxProp4" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(0.941867, 0.000294666, -0.335985, -0.000251197, 1, 0.000172839, 0.335985, -7.83899e-05, 0.941867, -1.82756, 0, -8.94056)
+
+[node name="StaticBoxProp5" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(-0.00802846, 0, 0.999968, 0, 1, 0, -0.999968, 0, -0.00802846, -1.82756, 1.072, -8.94056)
+
+[node name="StaticBoxProp6" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(0.158623, 0, -0.987339, 0, 1, 0, 0.987339, 0, 0.158623, -1.82756, 2.11515, -8.94056)
+
+[node name="StaticBoxProp2" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(-0.998927, 0, -0.0463046, 0, 1, 0, 0.0463046, 0, -0.998927, -3.18946, 1.02358, -8.94056)
+
+[node name="StaticBoxProp3" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(0.140884, 0, 0.990026, 0, 1, 0, -0.990026, 0, 0.140884, -3.32917, 2.07361, -8.94056)
+
+[node name="StaticBoxProp7" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(-0.745325, 0, -0.666702, 0, 1, 0, 0.666702, 0, -0.745325, 3.30026, 0, -9.9955)
+
+[node name="StaticBoxProp8" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(-0.925999, -0.000167359, -0.377526, -0.000251197, 1, 0.000172839, 0.377526, 0.00025488, -0.925999, 2.20725, 0, -9.01779)
+
+[node name="StaticBoxProp9" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(0.672664, 0, -0.739948, 0, 1, 0, 0.739948, 0, 0.672664, 2.20725, 1.072, -9.01779)
+
+[node name="StaticBoxProp10" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(-0.776487, 0, 0.630134, 0, 1, 0, -0.630134, 0, -0.776487, 2.20725, 2.11515, -9.01779)
+
+[node name="StaticBoxProp13" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(-0.507546, -0.000276415, 0.861624, -0.000251197, 1, 0.000172839, -0.861624, -0.000128716, -0.507546, 3.72978, -2.38419e-07, -8.85145)
+
+[node name="StaticBoxProp14" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(-0.634825, 0, -0.772656, 0, 1, 0, 0.772656, 0, -0.634825, 3.72978, 1.072, -8.85145)
+
+[node name="StaticBoxProp15" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(0.511143, 0, 0.859496, 0, 1, 0, -0.859496, 0, 0.511143, 3.72978, 2.11515, -8.85145)
+
+[node name="StaticBoxProp11" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(0.713654, 0, 0.700498, 0, 1, 0, -0.700498, 0, 0.713654, 3.22231, 1.02358, -9.92578)
+
+[node name="StaticBoxProp12" parent="Env" instance=ExtResource("3_b282g")]
+transform = Transform3D(0.555048, 0, -0.831819, 0, 1, 0, 0.831819, 0, 0.555048, 3.32644, 2.07361, -10.0189)
+
+[node name="MailMan" parent="." instance=ExtResource("1_kl3xy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.100771, 0, -2.23319)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.828364, 0.560191, 0, -0.560191, 0.828364, 0, 6.96333, 8.18178)
+projection = 1
+size = 11.62
+far = 338.32
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.305247, 0.952273, 0, -0.952273, 0.305247, 0, 6.53863, 0)
+shadow_enabled = true
+
+[node name="PlayerTriggerNode" parent="." instance=ExtResource("2_m6wnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.66556, 0.332787, 0.326164)
+
+[node name="lognode" type="Node" parent="."]
+script = ExtResource("3_gee3i")
+
+[connection signal="player_entered" from="PlayerTriggerNode" to="lognode" method="log"]
