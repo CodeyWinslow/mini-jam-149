@@ -194,16 +194,17 @@ node_connections = [&"locomotion", 0, &"Animation", &"locomotion", 1, &"Animatio
 
 [node name="MailMan" type="CharacterBody3D"]
 script = ExtResource("1_11ybm")
+ROT_SPEED = 10.0
 
 [node name="MailMan Skin" parent="." instance=ExtResource("2_t6djr")]
 transform = Transform3D(0.38, 0, 0, 0, 0.38, 0, 0, 0, 0.38, 0, 0, 0)
 
 [node name="Skeleton3D" parent="MailMan Skin/Base_Armature" index="0"]
 bones/2/rotation = Quaternion(-0.543858, -0.485362, 0.455817, 0.510757)
-bones/4/rotation = Quaternion(0.728249, 0.0202431, 0.0217434, 0.684669)
-bones/5/rotation = Quaternion(-0.0594963, -0.00335595, -0.00345585, 0.998217)
-bones/8/rotation = Quaternion(-0.188383, 0.157174, 0.0325463, 0.96889)
-bones/11/rotation = Quaternion(-0.168431, -0.157589, -0.0300354, 0.972571)
+bones/4/rotation = Quaternion(0.728259, 0.0198666, 0.0213895, 0.68468)
+bones/5/rotation = Quaternion(-0.0606918, -0.00335536, -0.00345628, 0.998145)
+bones/8/rotation = Quaternion(-0.189441, 0.15715, 0.0326793, 0.968684)
+bones/11/rotation = Quaternion(-0.169239, -0.157574, -0.0301372, 0.97243)
 bones/14/rotation = Quaternion(-0.544575, 0.484557, -0.455062, 0.511431)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

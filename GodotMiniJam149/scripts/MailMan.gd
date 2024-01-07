@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 #const SPEED = 5.0
 @export var SPEED = 5.0
+@export var ROT_SPEED = 1.0
 const JUMP_VELOCITY = 4.5
 
 signal speed_changed(newspeed)
@@ -10,6 +11,12 @@ signal speed_changed(newspeed)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var target_rotation = 0
+var helper_node : Node3D
+
+func _ready():
+	target_rotation = rotation.y
+	helper_node = Node3D.new()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -37,11 +44,16 @@ func _physics_process(delta):
 		velocity.x = norm_dir.x * SPEED
 		#velocity.z = direction.z * SPEED
 		velocity.z = norm_dir.z * SPEED
-		look_at(position + norm_dir);
+		#look_at(position + norm_dir)
+		
+		# set new target rotation
+		helper_node.look_at_from_position(Vector3.ZERO, norm_dir * 100)
+		target_rotation = helper_node.rotation.y
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
 	speed_changed.emit(newspeed / SPEED)
 
+	rotation.y = rotate_toward(rotation.y, target_rotation, delta * ROT_SPEED)
 	move_and_slide()
