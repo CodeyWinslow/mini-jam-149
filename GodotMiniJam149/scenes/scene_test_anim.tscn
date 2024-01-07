@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://k6sey2a3bwtf"]
+[gd_scene load_steps=10 format=3 uid="uid://k6sey2a3bwtf"]
 
 [ext_resource type="PackedScene" uid="uid://dut6np12pmumx" path="res://art/character/MailMan.blend" id="1_fe24o"]
 [ext_resource type="Script" path="res://scripts/test/mail_man_animation_test.gd" id="2_8xi25"]
+[ext_resource type="Material" uid="uid://b2gutugvn5bui" path="res://materials/mat_mailman_body.tres" id="3_cfyyx"]
+[ext_resource type="Texture2D" uid="uid://cvpimmayao1oe" path="res://art/character/Tex_MailMan_Outfit.png" id="4_bp2jl"]
+[ext_resource type="Texture2D" uid="uid://dxn35bolaysnt" path="res://art/character/Tex_MailMan_Hat.png" id="5_lolt3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eercq"]
+albedo_texture = ExtResource("4_bp2jl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0x05p"]
+albedo_texture = ExtResource("5_lolt3")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n22mi"]
 
@@ -14,14 +23,16 @@ size = Vector3(1.995, 0.03, 1.985)
 transform = Transform3D(0.129274, 0, 0, 0, 0.129274, 0, 0, 0, 0.129274, 0, 0, 0)
 script = ExtResource("2_8xi25")
 AnimNode = NodePath("AnimationPlayer")
+AnimationToPlay = "Run"
 
 [node name="Skeleton3D" parent="MailMan/Base_Armature" index="0"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/1/rotation = Quaternion(-2.96437e-06, 0, -0.665842, 0.746093)
 bones/2/rotation = Quaternion(-0.543858, -0.485361, 0.455817, 0.510757)
 bones/2/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(0.72853, 1.84107e-10, 0.00271072, 0.685009)
+bones/4/rotation = Quaternion(0.72853, 1.69947e-10, 0.00271072, 0.685009)
 bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.0867418, -0.00334141, -0.00346455, 0.996219)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(0.651759, 0.493695, 0.466627, -0.337245)
 bones/8/rotation = Quaternion(0.15827, 0.155113, -0.011587, 0.975067)
@@ -34,6 +45,15 @@ bones/13/rotation = Quaternion(-3.03719e-06, 0, 0.664738, 0.747076)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/rotation = Quaternion(-0.544575, 0.484557, -0.455062, 0.511431)
 bones/14/scale = Vector3(1, 1, 1)
+
+[node name="Base_Body-Base" parent="MailMan/Base_Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_cfyyx")
+
+[node name="Base_Body-Clothes" parent="MailMan/Base_Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_eercq")
+
+[node name="Base_Body-Hat" parent="MailMan/Base_Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0x05p")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, -2.12753e-08, 0.969936, 0.243361, 8.47945e-08, 0.243361, -0.969936, 0, 0.659489, -1.00357)

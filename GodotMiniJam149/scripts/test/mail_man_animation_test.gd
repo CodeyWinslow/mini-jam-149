@@ -1,11 +1,12 @@
 extends Node3D
 
 @export var AnimNode : AnimationPlayer
+@export var AnimationToPlay : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if AnimNode != null:
-		AnimNode.play("Idle")
+		AnimNode.play(AnimationToPlay)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
