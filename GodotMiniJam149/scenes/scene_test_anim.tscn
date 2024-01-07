@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://k6sey2a3bwtf"]
+[gd_scene load_steps=4 format=3 uid="uid://c84el30q8lisn"]
 
-[ext_resource type="PackedScene" uid="uid://m2hejuykv6fm" path="res://prefabs/anim_mannequin.tscn" id="1_tpiy5"]
+[ext_resource type="PackedScene" path="res://prefabs/anim_mannequin.tscn" id="1_tpiy5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n22mi"]
 
