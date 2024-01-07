@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://m2hejuykv6fm"]
+
+[ext_resource type="Script" path="res://scripts/test/mail_man_animation_test.gd" id="1_cn8bh"]
+[ext_resource type="PackedScene" uid="uid://dut6np12pmumx" path="res://art/character/MailMan.blend" id="2_i21o5"]
+
+[node name="AnimMannequin" type="Node3D"]
+script = ExtResource("1_cn8bh")
+AnimationToPlay = "Idle"
+
+[node name="MailMan" parent="." instance=ExtResource("2_i21o5")]
+transform = Transform3D(0.358034, 0, 0, 0, 0.358034, 0, 0, 0, 0.358034, 0, 0, 0)
