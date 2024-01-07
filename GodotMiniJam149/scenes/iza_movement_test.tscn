@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg5my20g465sw"]
+
+[ext_resource type="PackedScene" path="res://prefabs/mail_man.tscn" id="1_0rvww"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lwmqq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xx27u"]
+size = Vector3(1.995, 0.03, 1.985)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(8.4885, 0, 0, 0, 0.997468, 0, 0, 0, 8.4885, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_lwmqq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015, 0)
+shape = SubResource("BoxShape3D_xx27u")
+
+[node name="MailMan" parent="." instance=ExtResource("1_0rvww")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.75215, 0.658991, 0, -0.658991, 0.75215, 0, 7.54925, 7.55482)
+projection = 1
+fov = 10.0
+size = 9.205
+far = 1000.0
