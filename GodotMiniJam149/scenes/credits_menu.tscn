@@ -30,7 +30,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Created by NativeFury, Leviathan, iCow"
+text = "Created by NativeFury, Leviathan, iCow, Provolt"
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
