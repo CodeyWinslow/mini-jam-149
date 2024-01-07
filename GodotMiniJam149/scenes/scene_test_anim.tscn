@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://k6sey2a3bwtf"]
+
+[ext_resource type="PackedScene" uid="uid://dut6np12pmumx" path="res://art/character/MailMan.blend" id="1_fe24o"]
+[ext_resource type="Script" path="res://scripts/test/mail_man_animation_test.gd" id="2_8xi25"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n22mi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fo4yv"]
+size = Vector3(1.995, 0.03, 1.985)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MailMan" parent="." node_paths=PackedStringArray("AnimNode") instance=ExtResource("1_fe24o")]
+transform = Transform3D(0.129274, 0, 0, 0, 0.129274, 0, 0, 0, 0.129274, 0, 0, 0)
+script = ExtResource("2_8xi25")
+AnimNode = NodePath("AnimationPlayer")
+
+[node name="Skeleton3D" parent="MailMan/Base_Armature" index="0"]
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/1/rotation = Quaternion(-2.96437e-06, 0, -0.665842, 0.746093)
+bones/2/rotation = Quaternion(-0.543858, -0.485361, 0.455817, 0.510757)
+bones/2/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.72853, 1.84107e-10, 0.00271072, 0.685009)
+bones/4/scale = Vector3(1, 1, 1)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.651759, 0.493695, 0.466627, -0.337245)
+bones/8/rotation = Quaternion(0.15827, 0.155113, -0.011587, 0.975067)
+bones/9/rotation = Quaternion(0.0433053, -3.49874e-08, -0.00720406, 0.999036)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.651759, -0.494776, -0.462794, -0.340923)
+bones/11/rotation = Quaternion(0.15827, -0.155113, 0.011587, 0.975067)
+bones/12/rotation = Quaternion(0.0688948, 3.73132e-08, 0.00633836, 0.997604)
+bones/13/rotation = Quaternion(-3.03719e-06, 0, 0.664738, 0.747076)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(-0.544575, 0.484557, -0.455062, 0.511431)
+bones/14/scale = Vector3(1, 1, 1)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.12753e-08, 0.969936, 0.243361, 8.47945e-08, 0.243361, -0.969936, 0, 0.659489, -1.00357)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_n22mi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015, 0)
+shape = SubResource("BoxShape3D_fo4yv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.860835, -0.397101, -0.318234, 0.0415173, -0.568468, 0.821657, -0.507187, -0.720524, -0.472871, -0.277671, -3.04951, -0.526157)
+
+[editable path="MailMan"]
