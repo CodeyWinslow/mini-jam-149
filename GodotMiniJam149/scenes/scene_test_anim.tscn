@@ -168,10 +168,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.818
 
 [node name="Skeleton3D" parent="BlendAnimController/AnimMannequin_Blend/MailMan/Base_Armature" index="0"]
 bones/2/rotation = Quaternion(-0.543858, -0.485362, 0.455817, 0.510757)
-bones/4/rotation = Quaternion(0.728243, 0.0204449, 0.0219332, 0.684663)
-bones/5/rotation = Quaternion(-0.0596041, -0.00335589, -0.00345589, 0.99821)
-bones/8/rotation = Quaternion(-0.188597, 0.157169, 0.0325731, 0.968849)
-bones/11/rotation = Quaternion(-0.168431, -0.157589, -0.0300354, 0.972571)
+bones/4/rotation = Quaternion(0.728507, 0.0057598, 0.00812635, 0.684966)
+bones/5/rotation = Quaternion(-0.108529, -0.00332796, -0.00346966, 0.994082)
+bones/8/rotation = Quaternion(-0.225956, 0.156208, 0.0372644, 0.960809)
+bones/11/rotation = Quaternion(-0.225153, -0.156231, -0.0371637, 0.960998)
 bones/14/rotation = Quaternion(-0.544575, 0.484557, -0.455062, 0.511431)
 
 [node name="AnimationTree" type="AnimationTree" parent="BlendAnimController"]
