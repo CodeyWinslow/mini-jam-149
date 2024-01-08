@@ -4,6 +4,7 @@ extends Node3D
 @export var Spawners : Array[Node3D] = []
 
 var counter_label: Label
+var language_label: Label
 var pause_menu : Node
 var spawn_timer : Timer;
 
@@ -12,8 +13,10 @@ var count: int
 func _ready():
 	pause_menu = get_node("Pause Menu")
 	counter_label = get_node("Pauseable/Counter/CounterSubViewport/CounterLabel")
+	language_label = get_node("Pauseable/LanguageDisplay/CounterSubViewport/CounterLabel")
 	count = 0
 	counter_label.text = str(count)
+	language_label.text = ""
 	
 	spawn_timer = Timer.new()
 	add_child(spawn_timer)

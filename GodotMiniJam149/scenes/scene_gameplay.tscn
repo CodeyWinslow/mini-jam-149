@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5jm4c6icaxls"]
+[gd_scene load_steps=12 format=3 uid="uid://5jm4c6icaxls"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_5gjam"]
 [ext_resource type="Script" path="res://scripts/gameplayer_manager.gd" id="1_j8v5n"]
@@ -27,6 +27,9 @@ func _process(delta):
 size = Vector3(89.88, 0.524, 90.015)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tpl4h"]
+viewport_path = NodePath("CounterSubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_abg3c"]
 viewport_path = NodePath("CounterSubViewport")
 
 [node name="SceneGameplay" type="Node3D" node_paths=PackedStringArray("Spawners")]
@@ -118,6 +121,10 @@ SpawnDistance = 0.0
 [node name="BoxSpawner4" parent="Pauseable" instance=ExtResource("7_1pp30")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.0205, 3.17058, -1.83459)
 SpawnDistance = 0.0
+
+[node name="LanguageDisplay" parent="Pauseable" instance=ExtResource("6_x4w5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000714183, 2.55276, -16.3793)
+texture = SubResource("ViewportTexture_abg3c")
 
 [node name="Pause Menu" parent="." instance=ExtResource("4_yn1ef")]
 visible = false
