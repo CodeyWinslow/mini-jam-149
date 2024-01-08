@@ -42,5 +42,4 @@ func on_tracked_node_destroyed():
 	queue_free()
 	
 func on_can_interact_changed(can_interact : bool):
-	# here!
-	pass
+	$Sprite3D/SubViewport/Label.visible = can_interact
