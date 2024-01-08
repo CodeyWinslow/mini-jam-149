@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcsb1spk4ws5g"]
+
+[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="1_o0dla"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_c54hh"]
+viewport_path = NodePath("SubViewport")
+
+[node name="ProgressBar" type="Sprite3D"]
+billboard = 1
+texture = SubResource("ViewportTexture_c54hh")
+script = ExtResource("1_o0dla")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(100, 30)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+offset_right = 100.0
+offset_bottom = 30.0
+
+[node name="Timer" type="Timer" parent="SubViewport"]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="SubViewport/Timer" to="." method="_on_timer_timeout"]
