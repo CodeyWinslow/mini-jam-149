@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqhrv05rdh3p2"]
+
+[ext_resource type="PackedScene" uid="uid://dligx8j5ix2c4" path="res://prefabs/tracked_node.tscn" id="1_syr0g"]
+
+[node name="BoxUI" instance=ExtResource("1_syr0g")]
+track_type = 0
+offset = Vector3(0, 2, 0)

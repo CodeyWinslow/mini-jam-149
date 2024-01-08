@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1n26dwlxe4wv"]
+
+[ext_resource type="PackedScene" uid="uid://c8aitfuudokib" path="res://art/props/Box.blend" id="1_8dlon"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_30eb8"]
+
+[node name="Box" type="RigidBody3D" groups=["grabbable"]]
+
+[node name="Mesh" parent="." instance=ExtResource("1_8dlon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Col" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_30eb8")

@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://5jm4c6icaxls"]
+[gd_scene load_steps=11 format=3 uid="uid://5jm4c6icaxls"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_5gjam"]
-[ext_resource type="Script" path="res://scripts/iza_movement_test.gd" id="1_j8v5n"]
-[ext_resource type="Material" path="res://materials/test/transparent.tres" id="1_o5fsk"]
+[ext_resource type="Script" path="res://scripts/gameplayer_manager.gd" id="1_j8v5n"]
+[ext_resource type="Material" uid="uid://b2gutee8f8b1t" path="res://materials/test/transparent.tres" id="1_o5fsk"]
 [ext_resource type="PackedScene" uid="uid://jfak7q8pofme" path="res://prefabs/pause_menu.tscn" id="4_yn1ef"]
+[ext_resource type="PackedScene" uid="uid://d1n26dwlxe4wv" path="res://prefabs/box.tscn" id="5_xkov0"]
+[ext_resource type="PackedScene" uid="uid://bqhrv05rdh3p2" path="res://prefabs/box_ui.tscn" id="6_655rq"]
 
 [sub_resource type="GDScript" id="GDScript_ha4fr"]
 script/source = "extends Node3D
@@ -24,9 +26,7 @@ func _process(delta):
 [sub_resource type="BoxShape3D" id="BoxShape3D_d8sl1"]
 size = Vector3(89.88, 0.524, 90.015)
 
-[sub_resource type="BoxMesh" id="BoxMesh_l0lfq"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dqp7n"]
+[sub_resource type="SphereMesh" id="SphereMesh_xbdaj"]
 
 [node name="SceneGameplay" type="Node3D"]
 process_mode = 3
@@ -96,60 +96,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.729236, 5.42465, -1.67406)
 shadow_enabled = true
 omni_range = 10.7183
 
-[node name="TestGrabbable" type="StaticBody3D" parent="Pauseable" groups=["grabbable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.57158)
+[node name="BoxUI" parent="Pauseable" node_paths=PackedStringArray("initial_tracked_node") instance=ExtResource("6_655rq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.79585, 2.17778, 0.514394)
+initial_tracked_node = NodePath("../Box")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pauseable/TestGrabbable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502, 0)
-mesh = SubResource("BoxMesh_l0lfq")
-skeleton = NodePath("")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pauseable/BoxUI"]
+mesh = SubResource("SphereMesh_xbdaj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pauseable/TestGrabbable"]
-shape = SubResource("BoxShape3D_dqp7n")
+[node name="Box" parent="Pauseable" instance=ExtResource("5_xkov0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.24551, 6)
 
-[node name="TestGrabbable2" type="StaticBody3D" parent="Pauseable" groups=["grabbable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78675, -4.76837e-07, 3.41302)
+[node name="Box2" parent="Pauseable" instance=ExtResource("5_xkov0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.24551, 2)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pauseable/TestGrabbable2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502, 0)
-mesh = SubResource("BoxMesh_l0lfq")
-skeleton = NodePath("")
+[node name="Box3" parent="Pauseable" instance=ExtResource("5_xkov0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.24551, 8)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pauseable/TestGrabbable2"]
-shape = SubResource("BoxShape3D_dqp7n")
-
-[node name="TestGrabbable3" type="StaticBody3D" parent="Pauseable" groups=["grabbable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60371, -4.76837e-07, 5.5991)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pauseable/TestGrabbable3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502, 0)
-mesh = SubResource("BoxMesh_l0lfq")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pauseable/TestGrabbable3"]
-shape = SubResource("BoxShape3D_dqp7n")
-
-[node name="TestGrabbable4" type="StaticBody3D" parent="Pauseable" groups=["grabbable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87306, -4.76837e-07, 5.73594)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pauseable/TestGrabbable4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502, 0)
-mesh = SubResource("BoxMesh_l0lfq")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pauseable/TestGrabbable4"]
-shape = SubResource("BoxShape3D_dqp7n")
-
-[node name="TestGrabbable5" type="StaticBody3D" parent="Pauseable" groups=["grabbable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26532, -4.76837e-07, 5.15724)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pauseable/TestGrabbable5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502, 0)
-mesh = SubResource("BoxMesh_l0lfq")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pauseable/TestGrabbable5"]
-shape = SubResource("BoxShape3D_dqp7n")
+[node name="Box4" parent="Pauseable" instance=ExtResource("5_xkov0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.24551, 7)
 
 [node name="Pause Menu" parent="." instance=ExtResource("4_yn1ef")]
 visible = false
+
+[connection signal="resume" from="Pause Menu" to="." method="_resume_pause"]

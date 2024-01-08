@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dligx8j5ix2c4"]
+
+[ext_resource type="Script" path="res://scripts/tracked_node.gd" id="1_205k4"]
+
+[node name="TrackedNode" type="Node3D"]
+script = ExtResource("1_205k4")
