@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://nxj1jlkld7l0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ma85b"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Sprite3D" type="Sprite3D"]
+billboard = 1
+texture = SubResource("ViewportTexture_ma85b")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(550, 100)
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_right = 550.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 72
+text = "Grab (E)"
+horizontal_alignment = 1
