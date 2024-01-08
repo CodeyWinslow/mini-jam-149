@@ -208,10 +208,10 @@ transform = Transform3D(0.38, 0, 0, 0, 0.38, 0, 0, 0, 0.38, 0, 0, 0)
 
 [node name="Skeleton3D" parent="MailMan Skin/Base_Armature" index="0"]
 bones/2/rotation = Quaternion(-0.543858, -0.485362, 0.455817, 0.510757)
-bones/4/rotation = Quaternion(0.728503, 0.00626537, 0.0086017, 0.68496)
-bones/5/rotation = Quaternion(-0.106835, -0.00332907, -0.00346932, 0.994265)
-bones/8/rotation = Quaternion(-0.224672, 0.156245, 0.0371035, 0.96111)
-bones/11/rotation = Quaternion(-0.223185, -0.156288, -0.0369169, 0.961457)
+bones/4/rotation = Quaternion(0.728352, 0.0161124, 0.0178599, 0.684781)
+bones/5/rotation = Quaternion(-0.073582, -0.00334875, -0.00346067, 0.997278)
+bones/8/rotation = Quaternion(-0.198856, 0.156929, 0.0338627, 0.96679)
+bones/11/rotation = Quaternion(-0.184431, -0.157262, -0.0320492, 0.969653)
 bones/14/rotation = Quaternion(-0.544575, 0.484557, -0.455062, 0.511431)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -248,9 +248,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.16842, 0)
 visible = false
 mesh = SubResource("PrismMesh_f8kbj")
 
-[node name="GrabSocket" type="Node3D" parent="."]
+[node name="GrabSocket" type="Node3D" parent="." node_paths=PackedStringArray("CharacterBody")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.928326, -1.3936)
 script = ExtResource("6_dy0pu")
+CharacterBody = NodePath("..")
 
 [connection signal="speed_changed" from="." to="CharacterAnimControl" method="UpdateSpeedAlpha"]
 [connection signal="body_entered" from="GrabDetection" to="GrabDetection" method="_on_body_entered"]
