@@ -26,6 +26,7 @@ offset_right = 100.0
 offset_bottom = 30.0
 theme_override_styles/background = SubResource("StyleBoxFlat_m3iuv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_x30nb")
+fill_mode = 1
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="SubViewport"]
