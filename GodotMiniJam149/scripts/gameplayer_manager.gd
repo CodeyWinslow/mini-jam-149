@@ -1,8 +1,15 @@
 extends Node3D
 
 @export var TimeBetweenBoxSpawn = 15.0
+@export var BeginTimeReductionAmount = 0.5
+@export var TimeReductionScale = 1.1
+@export var BoxSpawnIncrementToAdjust : int = 5
+@export var SpawnTimeMinimum = 5.0
 @export var Spawners : Array[Node3D] = []
 @export var Goals : Array[Node3D] = []
+
+var time_reduction : float = 0;
+var boxes_spawned : int = 0
 
 signal game_lost
 
@@ -87,17 +94,27 @@ func increment_strike():
 		get_tree().paused = !get_tree().paused
 	
 func on_spawn_timer_finish():
-	spawn_timer.start(TimeBetweenBoxSpawn)
 	if (Spawners.size() > 0):
 		var index = randi() % Spawners.size()
 		var spawner = Spawners[index]
 		spawner.spawn_box()
 	
+	var spawn_time = TimeBetweenBoxSpawn - time_reduction
+	spawn_time = max(spawn_time, SpawnTimeMinimum)
+	spawn_timer.start(spawn_time)
+	
 # gameplay events
 
 func on_box_spawned(node : Node3D):
 	node.time_expired.connect(on_box_expired)
+	boxes_spawned += 1
 	print("box spawned")
+	
+	if ( boxes_spawned % BoxSpawnIncrementToAdjust == 0):
+		if (boxes_spawned == 1):
+			time_reduction = BeginTimeReductionAmount
+		else:
+			time_reduction *= TimeReductionScale
 	
 func on_box_expired():
 	increment_strike()

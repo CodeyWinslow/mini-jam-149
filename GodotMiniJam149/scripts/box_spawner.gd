@@ -29,7 +29,7 @@ func spawn_box():
 			
 		($AudioStreamPlayer as AudioStreamPlayer).play()
 		box_spawned.emit(box)
-
+	
 #func _process(delta):
 	#if (Input.is_action_just_pressed("debug_spawn")):
 		#spawn_box()
