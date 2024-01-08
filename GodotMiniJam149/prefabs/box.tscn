@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1n26dwlxe4wv"]
+[gd_scene load_steps=4 format=3 uid="uid://d1n26dwlxe4wv"]
 
 [ext_resource type="PackedScene" uid="uid://c8aitfuudokib" path="res://art/props/Box.blend" id="1_8dlon"]
+[ext_resource type="Script" path="res://scripts/box.gd" id="1_m5mk4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30eb8"]
 
-[node name="Box" type="RigidBody3D" groups=["grabbable"]]
+[node name="Box" type="RigidBody3D" groups=["box", "grabbable"]]
+script = ExtResource("1_m5mk4")
 
 [node name="Mesh" parent="." instance=ExtResource("1_8dlon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

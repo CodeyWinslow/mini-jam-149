@@ -1,12 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://5jm4c6icaxls"]
+[gd_scene load_steps=11 format=3 uid="uid://5jm4c6icaxls"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_5gjam"]
 [ext_resource type="Script" path="res://scripts/gameplayer_manager.gd" id="1_j8v5n"]
 [ext_resource type="Material" uid="uid://b2gutee8f8b1t" path="res://materials/test/transparent.tres" id="1_o5fsk"]
 [ext_resource type="PackedScene" uid="uid://jfak7q8pofme" path="res://prefabs/pause_menu.tscn" id="4_yn1ef"]
-[ext_resource type="PackedScene" uid="uid://d1n26dwlxe4wv" path="res://prefabs/box.tscn" id="5_xkov0"]
-[ext_resource type="PackedScene" uid="uid://bqhrv05rdh3p2" path="res://prefabs/box_ui.tscn" id="6_655rq"]
 [ext_resource type="PackedScene" uid="uid://cy5wnokarl5h8" path="res://scenes/counter.tscn" id="6_x4w5r"]
+[ext_resource type="PackedScene" uid="uid://bi3tm0wj0qylw" path="res://prefabs/box_spawner.tscn" id="7_1pp30"]
 
 [sub_resource type="GDScript" id="GDScript_ha4fr"]
 script/source = "extends Node3D
@@ -27,14 +26,14 @@ func _process(delta):
 [sub_resource type="BoxShape3D" id="BoxShape3D_d8sl1"]
 size = Vector3(89.88, 0.524, 90.015)
 
-[sub_resource type="SphereMesh" id="SphereMesh_xbdaj"]
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_tpl4h"]
 viewport_path = NodePath("CounterSubViewport")
 
-[node name="SceneGameplay" type="Node3D"]
+[node name="SceneGameplay" type="Node3D" node_paths=PackedStringArray("Spawners")]
 process_mode = 3
 script = ExtResource("1_j8v5n")
+TimeBetweenBoxSpawn = 2.0
+Spawners = [NodePath("Pauseable/BoxSpawner"), NodePath("Pauseable/BoxSpawner2"), NodePath("Pauseable/BoxSpawner3"), NodePath("Pauseable/BoxSpawner4")]
 
 [node name="Pauseable" type="Node3D" parent="."]
 process_mode = 1
@@ -100,28 +99,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.729236, 5.42465, -1.67406)
 shadow_enabled = true
 omni_range = 10.7183
 
-[node name="BoxUI" parent="Pauseable" node_paths=PackedStringArray("initial_tracked_node") instance=ExtResource("6_655rq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.79585, 2.17778, 0.514394)
-initial_tracked_node = NodePath("../Box")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pauseable/BoxUI"]
-mesh = SubResource("SphereMesh_xbdaj")
-
-[node name="Box" parent="Pauseable" instance=ExtResource("5_xkov0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.24551, 6)
-
-[node name="Box2" parent="Pauseable" instance=ExtResource("5_xkov0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.24551, 2)
-
-[node name="Box3" parent="Pauseable" instance=ExtResource("5_xkov0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.24551, 8)
-
-[node name="Box4" parent="Pauseable" instance=ExtResource("5_xkov0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.24551, 7)
-
 [node name="Counter" parent="Pauseable" instance=ExtResource("6_x4w5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7619, 2.40577, -16.554)
 texture = SubResource("ViewportTexture_tpl4h")
+
+[node name="BoxSpawner" parent="Pauseable" instance=ExtResource("7_1pp30")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.0205, 3.17058, -13.0362)
+SpawnDistance = 0.0
+
+[node name="BoxSpawner2" parent="Pauseable" instance=ExtResource("7_1pp30")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.0205, 3.17058, -9.28763)
+SpawnDistance = 0.0
+
+[node name="BoxSpawner3" parent="Pauseable" instance=ExtResource("7_1pp30")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.0205, 3.17058, -5.55616)
+SpawnDistance = 0.0
+
+[node name="BoxSpawner4" parent="Pauseable" instance=ExtResource("7_1pp30")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.0205, 3.17058, -1.83459)
+SpawnDistance = 0.0
 
 [node name="Pause Menu" parent="." instance=ExtResource("4_yn1ef")]
 visible = false

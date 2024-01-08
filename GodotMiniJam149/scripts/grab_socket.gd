@@ -7,6 +7,7 @@ signal picked_up(node : Node3D)
 
 var joint : Joint3D = null
 var current_node : Node3D = null
+var current_node_old_parent : Node3D = null
 
 func is_full():
 	return current_node != null
@@ -21,12 +22,10 @@ func drop():
 		
 		if node is RigidBody3D:
 			var rb = node as RigidBody3D
-			#detach_physics()
-			rb.reparent(get_tree().root)
 			rb.freeze = false
-		else:
-			node.reparent(get_tree().root)
 		
+		node.reparent(current_node_old_parent)
+		current_node_old_parent = null
 		dropped.emit(node)
 		
 func grab(node : Node3D):
@@ -34,17 +33,16 @@ func grab(node : Node3D):
 		drop()
 	
 	current_node = node
+	
 	if current_node is RigidBody3D and CharacterBody != null:
 		var rb = current_node as RigidBody3D
-		#attach_physics(rb)
-		rb.reparent(self)
-		rb.position = Vector3.ZERO
 		rb.freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
 		rb.freeze = true
-	else:
-		current_node.reparent(self)
-	current_node.position = Vector3.ZERO
 	
+	current_node_old_parent = current_node.get_parent()
+	current_node.reparent(self)
+	current_node.position = Vector3.ZERO
+	current_node.rotation *= Vector3.UP
 	picked_up.emit(current_node)
 
 func detach_physics():
