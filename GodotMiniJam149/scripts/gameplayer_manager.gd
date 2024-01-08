@@ -41,7 +41,7 @@ func _ready():
 	languageD_label.text = destination_text[3]
 	
 	spawn_timer = Timer.new()
-	add_child(spawn_timer)
+	get_node("Pauseable").add_child(spawn_timer)
 	spawn_timer.timeout.connect(on_spawn_timer_finish)
 	spawn_timer.start(TimeBetweenBoxSpawn)
 	
