@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy5wnokarl5h8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gjq2d"]
+viewport_path = NodePath("CounterSubViewport")
+
+[sub_resource type="Theme" id="Theme_rlauw"]
+default_font_size = 72
+
+[node name="Counter" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000714183, 1.19209e-07, -0.00022316)
+texture = SubResource("ViewportTexture_gjq2d")
+
+[node name="CounterSubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(200, 100)
+
+[node name="CounterLabel" type="Label" parent="CounterSubViewport"]
+offset_right = 200.0
+offset_bottom = 100.0
+theme = SubResource("Theme_rlauw")
+theme_override_colors/font_color = Color(0, 0.733333, 0.12549, 1)
+text = "999"
+horizontal_alignment = 2

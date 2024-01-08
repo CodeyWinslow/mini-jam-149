@@ -1,9 +1,15 @@
 extends Node3D
 
+var counter_label: Label
+var count: int
+
 var pause_menu : Node
 
 func _ready():
 	pause_menu = get_node("Pause Menu")
+	counter_label = get_node("Pauseable/Counter/CounterSubViewport/CounterLabel")
+	count = 0
+	counter_label.text = str(count)
 	
 func _process(_delta):
 	check_input();

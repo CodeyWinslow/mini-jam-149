@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5jm4c6icaxls"]
+[gd_scene load_steps=13 format=3 uid="uid://5jm4c6icaxls"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_5gjam"]
 [ext_resource type="Script" path="res://scripts/gameplayer_manager.gd" id="1_j8v5n"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jfak7q8pofme" path="res://prefabs/pause_menu.tscn" id="4_yn1ef"]
 [ext_resource type="PackedScene" uid="uid://d1n26dwlxe4wv" path="res://prefabs/box.tscn" id="5_xkov0"]
 [ext_resource type="PackedScene" uid="uid://bqhrv05rdh3p2" path="res://prefabs/box_ui.tscn" id="6_655rq"]
+[ext_resource type="PackedScene" uid="uid://cy5wnokarl5h8" path="res://scenes/counter.tscn" id="6_x4w5r"]
 
 [sub_resource type="GDScript" id="GDScript_ha4fr"]
 script/source = "extends Node3D
@@ -27,6 +28,9 @@ func _process(delta):
 size = Vector3(89.88, 0.524, 90.015)
 
 [sub_resource type="SphereMesh" id="SphereMesh_xbdaj"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tpl4h"]
+viewport_path = NodePath("CounterSubViewport")
 
 [node name="SceneGameplay" type="Node3D"]
 process_mode = 3
@@ -114,6 +118,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.24551, 8)
 
 [node name="Box4" parent="Pauseable" instance=ExtResource("5_xkov0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.24551, 7)
+
+[node name="Counter" parent="Pauseable" instance=ExtResource("6_x4w5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7619, 2.40577, -16.554)
+texture = SubResource("ViewportTexture_tpl4h")
 
 [node name="Pause Menu" parent="." instance=ExtResource("4_yn1ef")]
 visible = false
