@@ -4,6 +4,11 @@ extends Node3D
 @export var Spawners : Array[Node3D] = []
 
 var counter_label: Label
+var language_reader_label: Label
+var languageA_label: Label
+var languageB_label: Label
+var languageC_label: Label
+var languageD_label: Label
 var pause_menu : Node
 var spawn_timer : Timer;
 
@@ -12,8 +17,18 @@ var count: int
 func _ready():
 	pause_menu = get_node("Pause Menu")
 	counter_label = get_node("Pauseable/Counter/CounterSubViewport/CounterLabel")
+	language_reader_label = get_node("Pauseable/LanguageDisplay/CounterSubViewport/CounterLabel")
+	languageA_label = get_node("Pauseable/LanguageA/CounterSubViewport/CounterLabel")
+	languageB_label = get_node("Pauseable/LanguageB/CounterSubViewport/CounterLabel")
+	languageC_label = get_node("Pauseable/LanguageC/CounterSubViewport/CounterLabel")
+	languageD_label = get_node("Pauseable/LanguageD/CounterSubViewport/CounterLabel")
 	count = 0
 	counter_label.text = str(count)
+	language_reader_label.text = "" #☬〠☫☤
+	languageA_label.text = "☬"
+	languageB_label.text = "〠"
+	languageC_label.text = "☫"
+	languageD_label.text = "☤"
 	
 	spawn_timer = Timer.new()
 	add_child(spawn_timer)

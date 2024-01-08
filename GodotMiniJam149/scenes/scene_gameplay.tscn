@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5jm4c6icaxls"]
+[gd_scene load_steps=16 format=3 uid="uid://5jm4c6icaxls"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_5gjam"]
 [ext_resource type="Script" path="res://scripts/gameplayer_manager.gd" id="1_j8v5n"]
@@ -27,6 +27,21 @@ func _process(delta):
 size = Vector3(89.88, 0.524, 90.015)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tpl4h"]
+viewport_path = NodePath("CounterSubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_abg3c"]
+viewport_path = NodePath("CounterSubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yp1s2"]
+viewport_path = NodePath("CounterSubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4n0kp"]
+viewport_path = NodePath("CounterSubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ud8bc"]
+viewport_path = NodePath("CounterSubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_b6fp0"]
 viewport_path = NodePath("CounterSubViewport")
 
 [node name="SceneGameplay" type="Node3D" node_paths=PackedStringArray("Spawners")]
@@ -118,6 +133,26 @@ SpawnDistance = 0.0
 [node name="BoxSpawner4" parent="Pauseable" instance=ExtResource("7_1pp30")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.0205, 3.17058, -1.83459)
 SpawnDistance = 0.0
+
+[node name="LanguageDisplay" parent="Pauseable" instance=ExtResource("6_x4w5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000714183, 2.55276, -16.3793)
+texture = SubResource("ViewportTexture_abg3c")
+
+[node name="LanguageA" parent="Pauseable" instance=ExtResource("6_x4w5r")]
+transform = Transform3D(1, 0.000212859, 0.000864759, -0.00086522, 0.00216223, 0.999997, 0.000210981, -0.999998, 0.00216239, 13.9604, 4.05457, -10.2669)
+texture = SubResource("ViewportTexture_yp1s2")
+
+[node name="LanguageB" parent="Pauseable" instance=ExtResource("6_x4w5r")]
+transform = Transform3D(1, -0.000149979, -0.000368288, 0.000368221, -0.000440535, 1, -0.000150143, -1, -0.000440479, 14.0644, 4.06866, -4.8344)
+texture = SubResource("ViewportTexture_4n0kp")
+
+[node name="LanguageC" parent="Pauseable" instance=ExtResource("6_x4w5r")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.9604, 4.05457, -0.00022316)
+texture = SubResource("ViewportTexture_ud8bc")
+
+[node name="LanguageD" parent="Pauseable" instance=ExtResource("6_x4w5r")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.8758, 4.05457, 4.55465)
+texture = SubResource("ViewportTexture_b6fp0")
 
 [node name="Pause Menu" parent="." instance=ExtResource("4_yn1ef")]
 visible = false
