@@ -2,6 +2,7 @@ extends Node3D
 
 @export var TimeBetweenBoxSpawn = 15.0
 @export var Spawners : Array[Node3D] = []
+@export var Goals : Array[Node3D] = []
 
 var counter_label: Label
 var language_reader_label: Label
@@ -35,6 +36,15 @@ func _ready():
 	spawn_timer.timeout.connect(on_spawn_timer_finish)
 	spawn_timer.start(TimeBetweenBoxSpawn)
 	
+	for goalindex in range(Goals.size()):
+		var goal = Goals[goalindex]
+		goal.box_delivered_success.connect(on_box_delivered_success)
+		goal.box_delivered_fail.connect(on_box_delivered_fail)
+		
+	for spawnerindex in range(Spawners.size()):
+		var spawner = Spawners[spawnerindex]
+		spawner.box_spawned.connect(on_box_spawned)
+	
 func _process(_delta):
 	check_input();
 
@@ -56,5 +66,11 @@ func on_spawn_timer_finish():
 	
 # gameplay events
 
-func on_box_spawned(_node : Node3D):
-	pass
+func on_box_spawned(node : Node3D):
+	print("box spawned")
+	
+func on_box_delivered_success(box):
+	print("box delivered successfully")
+	
+func on_box_delivered_fail(box):
+	print("box delivery FAILED")

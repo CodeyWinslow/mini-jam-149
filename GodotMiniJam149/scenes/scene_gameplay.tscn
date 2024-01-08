@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://5jm4c6icaxls"]
+[gd_scene load_steps=17 format=3 uid="uid://5jm4c6icaxls"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_5gjam"]
 [ext_resource type="Script" path="res://scripts/gameplayer_manager.gd" id="1_j8v5n"]
 [ext_resource type="Material" uid="uid://b2gutee8f8b1t" path="res://materials/test/transparent.tres" id="1_o5fsk"]
 [ext_resource type="PackedScene" uid="uid://jfak7q8pofme" path="res://prefabs/pause_menu.tscn" id="4_yn1ef"]
+[ext_resource type="PackedScene" uid="uid://do667nucmjb82" path="res://prefabs/box_goal.tscn" id="6_w2vt8"]
 [ext_resource type="PackedScene" uid="uid://cy5wnokarl5h8" path="res://scenes/counter.tscn" id="6_x4w5r"]
 [ext_resource type="PackedScene" uid="uid://bi3tm0wj0qylw" path="res://prefabs/box_spawner.tscn" id="7_1pp30"]
 
@@ -44,11 +45,12 @@ viewport_path = NodePath("CounterSubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_b6fp0"]
 viewport_path = NodePath("CounterSubViewport")
 
-[node name="SceneGameplay" type="Node3D" node_paths=PackedStringArray("Spawners")]
+[node name="SceneGameplay" type="Node3D" node_paths=PackedStringArray("Spawners", "Goals")]
 process_mode = 3
 script = ExtResource("1_j8v5n")
-TimeBetweenBoxSpawn = 2.0
+TimeBetweenBoxSpawn = 10.0
 Spawners = [NodePath("Pauseable/BoxSpawner"), NodePath("Pauseable/BoxSpawner2"), NodePath("Pauseable/BoxSpawner3"), NodePath("Pauseable/BoxSpawner4")]
+Goals = [NodePath("Pauseable/BoxGoal"), NodePath("Pauseable/BoxGoal2"), NodePath("Pauseable/BoxGoal3"), NodePath("Pauseable/BoxGoal4")]
 
 [node name="Pauseable" type="Node3D" parent="."]
 process_mode = 1
@@ -147,12 +149,27 @@ transform = Transform3D(1, -0.000149979, -0.000368288, 0.000368221, -0.000440535
 texture = SubResource("ViewportTexture_4n0kp")
 
 [node name="LanguageC" parent="Pauseable" instance=ExtResource("6_x4w5r")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.9604, 4.05457, -0.00022316)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.9604, 4.05457, 0.268301)
 texture = SubResource("ViewportTexture_ud8bc")
 
 [node name="LanguageD" parent="Pauseable" instance=ExtResource("6_x4w5r")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.8758, 4.05457, 4.55465)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.8758, 4.05457, 5.33116)
 texture = SubResource("ViewportTexture_b6fp0")
+
+[node name="BoxGoal" parent="Pauseable" instance=ExtResource("6_w2vt8")]
+transform = Transform3D(2.31419, 0, 0, 0, 2.31419, 0, 0, 0, 2.31419, 11.3309, 0.023964, -10.2711)
+
+[node name="BoxGoal2" parent="Pauseable" instance=ExtResource("6_w2vt8")]
+transform = Transform3D(2.31419, 0, 0, 0, 2.31419, 0, 0, 0, 2.31419, 11.3056, 0.023964, -4.79049)
+GoalDestination = 1
+
+[node name="BoxGoal3" parent="Pauseable" instance=ExtResource("6_w2vt8")]
+transform = Transform3D(2.31419, 0, 0, 0, 2.31419, 0, 0, 0, 2.31419, 11.3056, 0.023964, 0.419369)
+GoalDestination = 2
+
+[node name="BoxGoal4" parent="Pauseable" instance=ExtResource("6_w2vt8")]
+transform = Transform3D(2.31419, 0, 0, 0, 2.31419, 0, 0, 0, 2.31419, 11.3056, 0.023964, 5.8623)
+GoalDestination = 3
 
 [node name="Pause Menu" parent="." instance=ExtResource("4_yn1ef")]
 visible = false
