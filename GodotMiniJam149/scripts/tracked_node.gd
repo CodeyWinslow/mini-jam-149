@@ -40,3 +40,7 @@ func update_position():
 		
 func on_tracked_node_destroyed():
 	queue_free()
+	
+func on_can_interact_changed(can_interact : bool):
+	# here!
+	pass

@@ -22,6 +22,7 @@ func spawn_box():
 			ui.start_tracking(box)
 			box.delivered.connect(ui.on_tracked_node_destroyed)
 			box.time_expired.connect(ui.on_tracked_node_destroyed)
+			box.can_interact_changed.connect(ui.on_can_interact_changed)
 			var progress_bar = ui.get_node("ProgressBar")
 			progress_bar.set_time(box.TimeToDeliver)
 			progress_bar.on_time_ended.connect(box.on_deliver_time_expired)
