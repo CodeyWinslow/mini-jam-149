@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://5jm4c6icaxls"]
+[gd_scene load_steps=23 format=3 uid="uid://5jm4c6icaxls"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_5gjam"]
 [ext_resource type="Script" path="res://scripts/gameplayer_manager.gd" id="1_j8v5n"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cy5wnokarl5h8" path="res://scenes/counter.tscn" id="6_x4w5r"]
 [ext_resource type="PackedScene" uid="uid://bvcng0n8ys3lp" path="res://prefabs/translator.tscn" id="7_0tls5"]
 [ext_resource type="PackedScene" uid="uid://bi3tm0wj0qylw" path="res://prefabs/box_spawner.tscn" id="7_1pp30"]
+[ext_resource type="PackedScene" uid="uid://dn4fv0hsspfr5" path="res://prefabs/lose_menu.tscn" id="9_5m0hw"]
 
 [sub_resource type="GDScript" id="GDScript_ha4fr"]
 script/source = "extends Node3D
@@ -323,9 +324,13 @@ transform = Transform3D(2.16132, 0, 0, 0, 2.16132, 0, 0, 0, 2.16132, 0, 0, 0)
 [node name="Pause Menu" parent="." instance=ExtResource("4_yn1ef")]
 visible = false
 
+[node name="Lose Menu" parent="." instance=ExtResource("9_5m0hw")]
+visible = false
+
 [connection signal="box_entered" from="Pauseable/Translator" to="." method="on_box_enter_translator"]
 [connection signal="box_exited" from="Pauseable/Translator" to="." method="on_box_exit_translator"]
 [connection signal="resume" from="Pause Menu" to="." method="_resume_pause"]
+[connection signal="resume" from="Lose Menu" to="." method="_on_lose_menu_resume"]
 
 [editable path="Pauseable/Counter"]
 [editable path="Pauseable/LanguageDisplay"]

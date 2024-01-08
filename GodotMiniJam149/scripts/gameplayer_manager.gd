@@ -14,6 +14,7 @@ var languageB_label: Label
 var languageC_label: Label
 var languageD_label: Label
 var pause_menu : Node
+var lose_menu : Node
 var spawn_timer : Timer;
 
 var destination_text = ["☬", "〠", "☫", "☤"]
@@ -23,6 +24,7 @@ var total_strikes: int
 
 func _ready():
 	pause_menu = get_node("Pause Menu")
+	lose_menu = get_node("Lose Menu")
 	counter_label = get_node("Pauseable/Counter/CounterSubViewport/CounterLabel")
 	language_reader_label = get_node("Pauseable/LanguageDisplay/CounterSubViewport/CounterLabel")
 	strikes_label = get_node("Pauseable/Strikes/CounterSubViewport/CounterLabel")
@@ -60,8 +62,9 @@ func check_input():
 		_resume_pause()
 
 func _resume_pause():
-	get_tree().paused = !get_tree().paused
-	pause_menu.visible = !pause_menu.visible
+	if total_strikes < 3:
+		get_tree().paused = !get_tree().paused
+		pause_menu.visible = !pause_menu.visible
 	
 func update_score(score):
 	total_score = score
@@ -79,7 +82,9 @@ func increment_strike():
 	set_strikes(total_strikes + 1)
 	if total_strikes >= 3:
 		print('YOU LOSE')
-		game_lost.emit()
+		#game_lost.emit()
+		lose_menu.visible = true
+		get_tree().paused = !get_tree().paused
 	
 func on_spawn_timer_finish():
 	spawn_timer.start(TimeBetweenBoxSpawn)
@@ -111,3 +116,6 @@ func on_box_enter_translator(box):
 	
 func on_box_exit_translator(box):
 	language_reader_label.text = "Translator: "
+
+func _on_lose_menu_resume():
+	get_tree().paused = false
