@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://5jm4c6icaxls"]
+[gd_scene load_steps=22 format=3 uid="uid://5jm4c6icaxls"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_5gjam"]
 [ext_resource type="Script" path="res://scripts/gameplayer_manager.gd" id="1_j8v5n"]
@@ -32,6 +32,18 @@ size = Vector3(89.88, 0.524, 90.015)
 viewport_path = NodePath("CounterSubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_abg3c"]
+viewport_path = NodePath("CounterSubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_smp3u"]
+viewport_path = NodePath("CounterSubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_evvf6"]
+viewport_path = NodePath("CounterSubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3ell2"]
+viewport_path = NodePath("CounterSubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_k2vcj"]
 viewport_path = NodePath("CounterSubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_yp1s2"]
@@ -79,9 +91,9 @@ use_collision = true
 size = Vector3(1, 4.01935, 28.5215)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Pauseable/Static/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032095, 1.48638, -17.1176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032095, 3.3057, -17.1176)
 use_collision = true
-size = Vector3(30.6872, 4.01935, 1.0979)
+size = Vector3(30.6872, 7.65799, 1.0979)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Pauseable/Static/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032095, 1.54381, 12.5401)
@@ -118,8 +130,24 @@ shadow_enabled = true
 omni_range = 10.7183
 
 [node name="Counter" parent="Pauseable" instance=ExtResource("6_x4w5r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7619, 2.40577, -16.554)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3567, 2.40577, -16.554)
 texture = SubResource("ViewportTexture_tpl4h")
+
+[node name="CounterSubViewport" parent="Pauseable/Counter" index="0"]
+size = Vector2i(730, 100)
+
+[node name="CounterLabel" parent="Pauseable/Counter/CounterSubViewport" index="0"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 0.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="BoxSpawner" parent="Pauseable" instance=ExtResource("7_1pp30")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.0205, 3.17058, -13.0362)
@@ -140,6 +168,111 @@ SpawnDistance = 0.0
 [node name="LanguageDisplay" parent="Pauseable" instance=ExtResource("6_x4w5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000714183, 2.55276, -16.3793)
 texture = SubResource("ViewportTexture_abg3c")
+
+[node name="CounterSubViewport" parent="Pauseable/LanguageDisplay" index="0"]
+size = Vector2i(720, 100)
+
+[node name="CounterLabel" parent="Pauseable/LanguageDisplay/CounterSubViewport" index="0"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -49.5
+offset_right = 0.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.266667, 0.756863, 0.866667, 1)
+horizontal_alignment = 1
+
+[node name="Instructions" parent="Pauseable" instance=ExtResource("6_x4w5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.84674, 3.82174, -16.3793)
+texture = SubResource("ViewportTexture_smp3u")
+
+[node name="CounterSubViewport" parent="Pauseable/Instructions" index="0"]
+size = Vector2i(620, 635)
+
+[node name="CounterLabel" parent="Pauseable/Instructions/CounterSubViewport" index="0"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -49.5
+offset_right = 0.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.223529, 0.313726, 0.32549, 1)
+text = "Packages are gibberish."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Strikes" parent="Pauseable" instance=ExtResource("6_x4w5r")]
+transform = Transform3D(6.74791, 0, 0, 0, -2.94961e-07, 6.74791, 0, -6.74791, -2.94961e-07, -3.03023, 0.192699, 6.67975)
+texture = SubResource("ViewportTexture_evvf6")
+
+[node name="CounterSubViewport" parent="Pauseable/Strikes" index="0"]
+size = Vector2i(620, 160)
+
+[node name="CounterLabel" parent="Pauseable/Strikes/CounterSubViewport" index="0"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -49.5
+offset_right = 0.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.780392, 0, 0.0156863, 1)
+theme_override_font_sizes/font_size = 100
+text = "XXX"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Instructions2" parent="Pauseable" instance=ExtResource("6_x4w5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.106586, 4.29106, -16.3793)
+texture = SubResource("ViewportTexture_3ell2")
+
+[node name="CounterSubViewport" parent="Pauseable/Instructions2" index="0"]
+size = Vector2i(1130, 930)
+
+[node name="CounterLabel" parent="Pauseable/Instructions2/CounterSubViewport" index="0"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -49.5
+offset_right = 0.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.223529, 0.313726, 0.32549, 1)
+text = "Use the translator to see its destination."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Instructions3" parent="Pauseable" instance=ExtResource("6_x4w5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2805, 4.04076, -16.3793)
+texture = SubResource("ViewportTexture_k2vcj")
+
+[node name="CounterSubViewport" parent="Pauseable/Instructions3" index="0"]
+size = Vector2i(1130, 540)
+
+[node name="CounterLabel" parent="Pauseable/Instructions3/CounterSubViewport" index="0"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -49.5
+offset_right = 0.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.223529, 0.313726, 0.32549, 1)
+text = "Bring packages to the right teleporter!"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="LanguageA" parent="Pauseable" instance=ExtResource("6_x4w5r")]
 transform = Transform3D(1, 0.000212859, 0.000864759, -0.00086522, 0.00216223, 0.999997, 0.000210981, -0.999998, 0.00216239, 13.9604, 4.05457, -10.2669)
@@ -194,4 +327,10 @@ visible = false
 [connection signal="box_exited" from="Pauseable/Translator" to="." method="on_box_exit_translator"]
 [connection signal="resume" from="Pause Menu" to="." method="_resume_pause"]
 
+[editable path="Pauseable/Counter"]
+[editable path="Pauseable/LanguageDisplay"]
+[editable path="Pauseable/Instructions"]
+[editable path="Pauseable/Strikes"]
+[editable path="Pauseable/Instructions2"]
+[editable path="Pauseable/Instructions3"]
 [editable path="Pauseable/Translator"]

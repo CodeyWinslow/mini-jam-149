@@ -8,6 +8,7 @@ signal game_lost
 
 var counter_label: Label
 var language_reader_label: Label
+var strikes_label : Label
 var languageA_label: Label
 var languageB_label: Label
 var languageC_label: Label
@@ -24,12 +25,14 @@ func _ready():
 	pause_menu = get_node("Pause Menu")
 	counter_label = get_node("Pauseable/Counter/CounterSubViewport/CounterLabel")
 	language_reader_label = get_node("Pauseable/LanguageDisplay/CounterSubViewport/CounterLabel")
+	strikes_label = get_node("Pauseable/Strikes/CounterSubViewport/CounterLabel")
 	languageA_label = get_node("Pauseable/LanguageA/CounterSubViewport/CounterLabel")
 	languageB_label = get_node("Pauseable/LanguageB/CounterSubViewport/CounterLabel")
 	languageC_label = get_node("Pauseable/LanguageC/CounterSubViewport/CounterLabel")
 	languageD_label = get_node("Pauseable/LanguageD/CounterSubViewport/CounterLabel")
 	update_score(0)
-	language_reader_label.text = "" #☬〠☫☤
+	set_strikes(0)
+	language_reader_label.text = "Translator: " #☬〠☫☤
 	languageA_label.text = destination_text[0]
 	languageB_label.text = destination_text[1]
 	languageC_label.text = destination_text[2]
@@ -62,10 +65,14 @@ func _resume_pause():
 	
 func update_score(score):
 	total_score = score
-	counter_label.text = str(total_score)
+	counter_label.text = "Packages sent: " + str(total_score)
 	
 func set_strikes(strikes):
 	total_strikes = strikes
+	strikes = ""
+	for i in range(total_strikes):
+		strikes += "X"
+	strikes_label.text = strikes
 	# todo: update text in game
 	
 func increment_strike():
@@ -100,7 +107,7 @@ func on_box_delivered_fail(box):
 	
 func on_box_enter_translator(box):
 	var dest = box.expected_destination
-	language_reader_label.text = destination_text[dest]
+	language_reader_label.text = "Translator: " + destination_text[dest]
 	
 func on_box_exit_translator(box):
-	language_reader_label.text = ""
+	language_reader_label.text = "Translator: "
