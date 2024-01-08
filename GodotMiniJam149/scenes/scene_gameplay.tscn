@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://5jm4c6icaxls"]
+[gd_scene load_steps=18 format=3 uid="uid://5jm4c6icaxls"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_5gjam"]
 [ext_resource type="Script" path="res://scripts/gameplayer_manager.gd" id="1_j8v5n"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jfak7q8pofme" path="res://prefabs/pause_menu.tscn" id="4_yn1ef"]
 [ext_resource type="PackedScene" uid="uid://do667nucmjb82" path="res://prefabs/box_goal.tscn" id="6_w2vt8"]
 [ext_resource type="PackedScene" uid="uid://cy5wnokarl5h8" path="res://scenes/counter.tscn" id="6_x4w5r"]
+[ext_resource type="PackedScene" uid="uid://bvcng0n8ys3lp" path="res://prefabs/translator.tscn" id="7_0tls5"]
 [ext_resource type="PackedScene" uid="uid://bi3tm0wj0qylw" path="res://prefabs/box_spawner.tscn" id="7_1pp30"]
 
 [sub_resource type="GDScript" id="GDScript_ha4fr"]
@@ -171,7 +172,26 @@ GoalDestination = 2
 transform = Transform3D(2.31419, 0, 0, 0, 2.31419, 0, 0, 0, 2.31419, 11.3056, 0.023964, 5.8623)
 GoalDestination = 3
 
+[node name="Translator" parent="Pauseable" instance=ExtResource("7_0tls5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0160413, 0.0239631, -14.0275)
+
+[node name="MeshInstance3D" parent="Pauseable/Translator" index="0"]
+transform = Transform3D(0.136713, 0, 0, 0, 0.144671, 0, 0, 0, 4.06079, -2.29188, 0, -0.451208)
+
+[node name="MeshInstance3D2" parent="Pauseable/Translator" index="1"]
+transform = Transform3D(0.136713, 0, 0, 0, 0.144671, 0, 0, 0, 4.48683, 2.36307, 0.0193276, -0.186984)
+
+[node name="MeshInstance3D3" parent="Pauseable/Translator" index="2"]
+transform = Transform3D(4.48193, 0, 0, 0, 0.144671, 0, 0, 0, 0.194869, 0.000916481, 0, 2.26933)
+
+[node name="Area3D" parent="Pauseable/Translator" index="3"]
+transform = Transform3D(2.16132, 0, 0, 0, 2.16132, 0, 0, 0, 2.16132, 0, 0, 0)
+
 [node name="Pause Menu" parent="." instance=ExtResource("4_yn1ef")]
 visible = false
 
+[connection signal="box_entered" from="Pauseable/Translator" to="." method="on_box_enter_translator"]
+[connection signal="box_exited" from="Pauseable/Translator" to="." method="on_box_exit_translator"]
 [connection signal="resume" from="Pause Menu" to="." method="_resume_pause"]
+
+[editable path="Pauseable/Translator"]
