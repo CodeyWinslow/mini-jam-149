@@ -349,6 +349,7 @@ transform = Transform3D(2.16132, 0, 0, 0, 2.16132, 0, 0, 0, 2.16132, 0, 0, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pauseable"]
 stream = ExtResource("10_hocyu")
+volume_db = -5.0
 autoplay = true
 
 [node name="Pause Menu" parent="." instance=ExtResource("4_yn1ef")]
