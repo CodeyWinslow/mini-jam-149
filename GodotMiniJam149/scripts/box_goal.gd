@@ -12,4 +12,5 @@ func _on_area_3d_box_entered(box):
 	else:
 		box_delivered_fail.emit(box)
 		
+	($AudioStreamPlayer as AudioStreamPlayer).play()
 	box.deliver()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://do667nucmjb82"]
+[gd_scene load_steps=7 format=3 uid="uid://do667nucmjb82"]
 
 [ext_resource type="Script" path="res://scripts/box_goal.gd" id="1_y3b6h"]
 [ext_resource type="PackedScene" path="res://prefabs/box_trigger.tscn" id="2_03ks4"]
 [ext_resource type="Shape3D" uid="uid://chuxkepfbgx20" path="res://new_box_shape_3d.tres" id="3_ts3nn"]
 [ext_resource type="Material" uid="uid://bhbubeyh6a1w1" path="res://materials/deliverypad.tres" id="4_h620y"]
+[ext_resource type="AudioStream" uid="uid://dkl1d6opuxkey" path="res://Audio/send_package.wav" id="5_dylwm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_veh8s"]
 size = Vector3(1.995, 0.29, 2.015)
@@ -20,6 +21,9 @@ shape = ExtResource("3_ts3nn")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = ExtResource("4_h620y")
 mesh = SubResource("BoxMesh_veh8s")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dylwm")
 
 [connection signal="box_entered" from="Area3D" to="." method="_on_area_3d_box_entered"]
 

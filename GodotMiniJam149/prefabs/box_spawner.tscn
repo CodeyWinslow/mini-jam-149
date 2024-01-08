@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bi3tm0wj0qylw"]
+[gd_scene load_steps=7 format=3 uid="uid://bi3tm0wj0qylw"]
 
 [ext_resource type="Script" path="res://scripts/box_spawner.gd" id="1_r8fkg"]
 [ext_resource type="PackedScene" uid="uid://d1n26dwlxe4wv" path="res://prefabs/box.tscn" id="2_hilih"]
 [ext_resource type="PackedScene" uid="uid://bqhrv05rdh3p2" path="res://prefabs/box_ui.tscn" id="3_fp1dx"]
 [ext_resource type="PackedScene" uid="uid://308upmohh7m3" path="res://art/environment/Chute.blend" id="4_eunjp"]
 [ext_resource type="Material" uid="uid://ynu8lbeda14e" path="res://materials/metal_chute.tres" id="5_pqu3h"]
+[ext_resource type="AudioStream" uid="uid://b4ees44qsa5a1" path="res://Audio/new_package.wav" id="6_odofb"]
 
 [node name="BoxSpawner" type="Node3D"]
 script = ExtResource("1_r8fkg")
@@ -15,5 +16,8 @@ BoxUIPrefab = ExtResource("3_fp1dx")
 
 [node name="Chute" parent="Chute2" index="0"]
 material_override = ExtResource("5_pqu3h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_odofb")
 
 [editable path="Chute2"]

@@ -27,6 +27,7 @@ func spawn_box():
 			progress_bar.set_time(box.TimeToDeliver)
 			progress_bar.on_time_ended.connect(box.on_deliver_time_expired)
 			
+		($AudioStreamPlayer as AudioStreamPlayer).play()
 		box_spawned.emit(box)
 
 #func _process(delta):
