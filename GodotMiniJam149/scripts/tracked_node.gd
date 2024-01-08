@@ -37,3 +37,6 @@ func _physics_process(_delta):
 func update_position():
 	if (tracked_node != null):
 		global_position = tracked_node.global_position + offset
+		
+func on_tracked_node_destroyed():
+	queue_free()

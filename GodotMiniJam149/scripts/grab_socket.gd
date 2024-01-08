@@ -20,6 +20,9 @@ func drop():
 		var node = current_node
 		current_node = null
 		
+		node.delivered.disconnect(on_grabbable_destroyed)
+		node.time_expired.disconnect(on_grabbable_destroyed)
+		
 		if node is RigidBody3D:
 			var rb = node as RigidBody3D
 			rb.freeze = false
@@ -43,7 +46,17 @@ func grab(node : Node3D):
 	current_node.reparent(self)
 	current_node.position = Vector3.ZERO
 	current_node.rotation *= Vector3.UP
+	
+	node.delivered.connect(on_grabbable_destroyed)
+	node.time_expired.connect(on_grabbable_destroyed)
 	picked_up.emit(current_node)
+
+func on_grabbable_destroyed():
+	current_node = null
+	current_node_old_parent = null
+	dropped.emit(null)
+
+
 
 func detach_physics():
 	joint.node_a = ""

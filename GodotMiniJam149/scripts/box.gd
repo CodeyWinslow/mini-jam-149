@@ -1,15 +1,11 @@
 extends RigidBody3D
 
+@export var TimeToDeliver : float = 30.0
 
+var expected_destination : Types.Destination = Types.Destination.DestinationA
 
-enum Destination {
-	A,
-	B,
-	C,
-	D
-}
-
-var expected_destination : Destination = Destination.A
+signal delivered
+signal time_expired
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,4 +14,12 @@ func _ready():
 
 
 func get_random_destination():
-	return randi() % Destination.size() as Destination
+	return randi() % Types.Destination.size() as Types.Destination
+	
+func on_deliver_time_expired():
+	time_expired.emit()
+	queue_free()
+
+func deliver():
+	delivered.emit()
+	queue_free()
