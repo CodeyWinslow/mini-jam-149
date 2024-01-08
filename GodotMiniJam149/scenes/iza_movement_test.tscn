@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg5my20g465sw"]
+[gd_scene load_steps=7 format=3 uid="uid://dnck42lik7k7q"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_0rvww"]
 [ext_resource type="Script" path="res://scripts/iza_movement_test.gd" id="1_abhsr"]
@@ -46,6 +46,7 @@ shape = SubResource("BoxShape3D_xx27u")
 [node name="Camera3D" type="Camera3D" parent="Pauseable"]
 transform = Transform3D(1, 0, 0, 0, 0.75215, 0.658991, 0, -0.658991, 0.75215, 0, 7.54925, 7.55482)
 projection = 1
+current = true
 fov = 10.0
 size = 9.205
 far = 1000.0
