@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://5jm4c6icaxls"]
+[gd_scene load_steps=26 format=3 uid="uid://5jm4c6icaxls"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_5gjam"]
 [ext_resource type="Script" path="res://scripts/gameplayer_manager.gd" id="1_j8v5n"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bvcng0n8ys3lp" path="res://prefabs/translator.tscn" id="7_0tls5"]
 [ext_resource type="PackedScene" uid="uid://bi3tm0wj0qylw" path="res://prefabs/box_spawner.tscn" id="7_1pp30"]
 [ext_resource type="PackedScene" uid="uid://dn4fv0hsspfr5" path="res://prefabs/lose_menu.tscn" id="9_5m0hw"]
+[ext_resource type="AudioStream" uid="uid://d1offcbhgo1kr" path="res://Audio/MailManTheme.mp3" id="10_hocyu"]
 
 [sub_resource type="GDScript" id="GDScript_ha4fr"]
 script/source = "extends Node3D
@@ -345,6 +346,9 @@ transform = Transform3D(4.48193, 0, 0, 0, 0.144671, 0, 0, 0, 0.194869, 0.0009164
 
 [node name="Area3D" parent="Pauseable/Translator" index="3"]
 transform = Transform3D(2.16132, 0, 0, 0, 2.16132, 0, 0, 0, 2.16132, 0, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pauseable"]
+stream = ExtResource("10_hocyu")
 
 [node name="Pause Menu" parent="." instance=ExtResource("4_yn1ef")]
 visible = false
