@@ -10,9 +10,8 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_restart_pressed():
+func _on_resume_pressed():
 	resume.emit()
-	get_tree().change_scene_to_file("res://scenes/scene_gameplay.tscn")
 
 func _on_quit_pressed():
 	resume.emit()
