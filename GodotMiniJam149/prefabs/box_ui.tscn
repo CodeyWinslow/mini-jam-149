@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqhrv05rdh3p2"]
+[gd_scene load_steps=4 format=3 uid="uid://bqhrv05rdh3p2"]
 
 [ext_resource type="PackedScene" uid="uid://dligx8j5ix2c4" path="res://prefabs/tracked_node.tscn" id="1_syr0g"]
+[ext_resource type="PackedScene" uid="uid://dcsb1spk4ws5g" path="res://scenes/progress_bar.tscn" id="2_otvhq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_70k0r"]
+viewport_path = NodePath("SubViewport")
 
 [node name="BoxUI" instance=ExtResource("1_syr0g")]
 track_type = 0
 offset = Vector3(0, 2, 0)
+
+[node name="ProgressBar" parent="." index="0" instance=ExtResource("2_otvhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58923, 0)
+texture = SubResource("ViewportTexture_70k0r")
