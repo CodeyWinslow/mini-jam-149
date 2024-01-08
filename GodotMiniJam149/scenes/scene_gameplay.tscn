@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://5jm4c6icaxls"]
+[gd_scene load_steps=25 format=3 uid="uid://5jm4c6icaxls"]
 
 [ext_resource type="PackedScene" uid="uid://dudg88dxjmjuc" path="res://prefabs/mail_man.tscn" id="1_5gjam"]
 [ext_resource type="Script" path="res://scripts/gameplayer_manager.gd" id="1_j8v5n"]
-[ext_resource type="Material" uid="uid://b2gutee8f8b1t" path="res://materials/test/transparent.tres" id="1_o5fsk"]
+[ext_resource type="Material" uid="uid://uvqytt3hcv0l" path="res://materials/test/blue.tres" id="2_rfylm"]
+[ext_resource type="Material" uid="uid://b2b7sa712ykp8" path="res://materials/floor.tres" id="3_ep7on"]
+[ext_resource type="Material" uid="uid://by0c6fng8ggm4" path="res://materials/test/blue-transparent.tres" id="4_iw0wj"]
 [ext_resource type="PackedScene" uid="uid://jfak7q8pofme" path="res://prefabs/pause_menu.tscn" id="4_yn1ef"]
 [ext_resource type="PackedScene" uid="uid://do667nucmjb82" path="res://prefabs/box_goal.tscn" id="6_w2vt8"]
 [ext_resource type="PackedScene" uid="uid://cy5wnokarl5h8" path="res://scenes/counter.tscn" id="6_x4w5r"]
@@ -25,6 +27,7 @@ func _process(delta):
 "
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_32eup"]
+material = ExtResource("3_ep7on")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d8sl1"]
 size = Vector3(89.88, 0.524, 90.015)
@@ -75,7 +78,7 @@ script = SubResource("GDScript_ha4fr")
 [node name="Ground" type="Node3D" parent="Pauseable/Static"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pauseable/Static/Ground"]
-transform = Transform3D(45.0012, 0, 0, 0, 1, 0, 0, 0, 45.0012, 0, 0, 0)
+transform = Transform3D(15.1551, 0, 0, 0, 1, 0, 0, 0, 15.0687, 0, 0, -2.26133)
 mesh = SubResource("PlaneMesh_32eup")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pauseable/Static/Ground"]
@@ -88,22 +91,25 @@ shape = SubResource("BoxShape3D_d8sl1")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Pauseable/Static/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8832, 1.50967, -2.28896)
+material_override = ExtResource("2_rfylm")
 use_collision = true
 size = Vector3(1, 4.01935, 28.5215)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Pauseable/Static/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032095, 3.3057, -17.1176)
+material_override = ExtResource("2_rfylm")
 use_collision = true
 size = Vector3(30.6872, 7.65799, 1.0979)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Pauseable/Static/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032095, 1.54381, 12.5401)
-material_override = ExtResource("1_o5fsk")
+material_override = ExtResource("4_iw0wj")
 use_collision = true
 size = Vector3(30.6872, 4.01935, 1.0979)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Pauseable/Static/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8229, 1.50967, -2.28896)
+material_override = ExtResource("2_rfylm")
 use_collision = true
 size = Vector3(1, 4.01935, 28.5215)
 
@@ -125,10 +131,29 @@ light_energy = 10.846
 light_size = 0.025
 omni_range = 77.599
 
-[node name="Point" type="OmniLight3D" parent="Pauseable/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.729236, 5.42465, -1.67406)
+[node name="SpotLight3D" type="SpotLight3D" parent="Pauseable/Lighting"]
+transform = Transform3D(1, 0, 0, 0, -0.219131, 0.975695, 0, -0.975695, -0.219131, -7.40103, 8.55207, -12.439)
+light_energy = 8.385
 shadow_enabled = true
-omni_range = 10.7183
+spot_range = 17.6055
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Pauseable/Lighting"]
+transform = Transform3D(1, 0, 0, 0, -0.219131, 0.975695, 0, -0.975695, -0.219131, 5.32686, 8.55207, -12.439)
+light_energy = 8.385
+shadow_enabled = true
+spot_range = 17.6055
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Pauseable/Lighting"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.65414, 8.55207, 5.75224)
+light_energy = 8.385
+shadow_enabled = true
+spot_range = 17.6055
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Pauseable/Lighting"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.19505, 8.55207, 5.75224)
+light_energy = 8.385
+shadow_enabled = true
+spot_range = 17.6055
 
 [node name="Counter" parent="Pauseable" instance=ExtResource("6_x4w5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3567, 2.40577, -16.554)
@@ -203,7 +228,7 @@ offset_right = 0.0
 offset_bottom = 49.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.223529, 0.313726, 0.32549, 1)
+theme_override_colors/font_color = Color(0.658824, 0.776471, 0.792157, 1)
 text = "Packages are gibberish."
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -248,7 +273,7 @@ offset_right = 0.0
 offset_bottom = 49.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.223529, 0.313726, 0.32549, 1)
+theme_override_colors/font_color = Color(0.658824, 0.776471, 0.792157, 1)
 text = "Use the translator to see its destination."
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -270,25 +295,25 @@ offset_right = 0.0
 offset_bottom = 49.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.223529, 0.313726, 0.32549, 1)
+theme_override_colors/font_color = Color(0.658824, 0.776471, 0.792157, 1)
 text = "Bring packages to the right teleporter!"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="LanguageA" parent="Pauseable" instance=ExtResource("6_x4w5r")]
-transform = Transform3D(1, 0.000212859, 0.000864759, -0.00086522, 0.00216223, 0.999997, 0.000210981, -0.999998, 0.00216239, 13.9604, 4.05457, -10.2669)
+transform = Transform3D(2.0195, 0.000429868, 0.00174638, -0.00174731, 0.00436662, 2.01949, 0.000426076, -2.01949, 0.00436694, 10.0294, 0.406257, -10.2687)
 texture = SubResource("ViewportTexture_yp1s2")
 
 [node name="LanguageB" parent="Pauseable" instance=ExtResource("6_x4w5r")]
-transform = Transform3D(1, -0.000149979, -0.000368288, 0.000368221, -0.000440535, 1, -0.000150143, -1, -0.000440479, 14.0644, 4.06866, -4.8344)
+transform = Transform3D(2.05552, -0.000308284, -0.000757022, 0.000756884, -0.000905527, 2.05552, -0.000308621, -2.05552, -0.000905412, 10.1334, 0.409707, -4.83311)
 texture = SubResource("ViewportTexture_4n0kp")
 
 [node name="LanguageC" parent="Pauseable" instance=ExtResource("6_x4w5r")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.9604, 4.05457, 0.268301)
+transform = Transform3D(1.97461, 0, 0, 0, -8.63129e-08, 1.97461, 0, -1.97461, -8.63129e-08, 10.0294, 0.398793, 0.268301)
 texture = SubResource("ViewportTexture_ud8bc")
 
 [node name="LanguageD" parent="Pauseable" instance=ExtResource("6_x4w5r")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.8758, 4.05457, 5.33116)
+transform = Transform3D(1.9981, 0, 0, 0, -8.73398e-08, 1.9981, 0, -1.9981, -8.73398e-08, 9.94483, 0.398793, 5.63121)
 texture = SubResource("ViewportTexture_b6fp0")
 
 [node name="BoxGoal" parent="Pauseable" instance=ExtResource("6_w2vt8")]
