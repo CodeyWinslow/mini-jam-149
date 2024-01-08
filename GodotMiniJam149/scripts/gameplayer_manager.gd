@@ -100,6 +100,7 @@ func on_box_spawned(node : Node3D):
 	print("box spawned")
 	
 func on_box_expired():
+	increment_strike()
 	print("box expired!")
 	
 func on_box_delivered_success(box):

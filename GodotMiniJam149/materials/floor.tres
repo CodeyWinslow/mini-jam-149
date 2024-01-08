@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b2b7sa712ykp8"]
+
+[ext_resource type="Texture2D" uid="uid://cx0qr872sc1uk" path="res://textures/trak_tile_g2.jpg" id="1_ybukw"]
+
+[resource]
+albedo_texture = ExtResource("1_ybukw")
+uv1_scale = Vector3(8.01, 8.01, 8.01)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi3tm0wj0qylw"]
+[gd_scene load_steps=6 format=3 uid="uid://bi3tm0wj0qylw"]
 
 [ext_resource type="Script" path="res://scripts/box_spawner.gd" id="1_r8fkg"]
 [ext_resource type="PackedScene" uid="uid://d1n26dwlxe4wv" path="res://prefabs/box.tscn" id="2_hilih"]
 [ext_resource type="PackedScene" uid="uid://bqhrv05rdh3p2" path="res://prefabs/box_ui.tscn" id="3_fp1dx"]
 [ext_resource type="PackedScene" uid="uid://308upmohh7m3" path="res://art/environment/Chute.blend" id="4_eunjp"]
+[ext_resource type="Material" uid="uid://ynu8lbeda14e" path="res://materials/metal_chute.tres" id="5_pqu3h"]
 
 [node name="BoxSpawner" type="Node3D"]
 script = ExtResource("1_r8fkg")
@@ -11,3 +12,8 @@ BoxPrefab = ExtResource("2_hilih")
 BoxUIPrefab = ExtResource("3_fp1dx")
 
 [node name="Chute2" parent="." instance=ExtResource("4_eunjp")]
+
+[node name="Chute" parent="Chute2" index="0"]
+material_override = ExtResource("5_pqu3h")
+
+[editable path="Chute2"]
