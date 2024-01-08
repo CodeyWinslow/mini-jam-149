@@ -80,6 +80,9 @@ viewport_path = NodePath("CounterSubViewport")
 process_mode = 3
 script = ExtResource("1_j8v5n")
 TimeBetweenBoxSpawn = 10.0
+BeginTimeReductionAmount = 1.0
+TimeReductionScale = 1.3
+BoxSpawnIncrementToAdjust = 3
 Spawners = [NodePath("Pauseable/BoxSpawner"), NodePath("Pauseable/BoxSpawner2"), NodePath("Pauseable/BoxSpawner3"), NodePath("Pauseable/BoxSpawner4")]
 Goals = [NodePath("Pauseable/BoxGoal"), NodePath("Pauseable/BoxGoal2"), NodePath("Pauseable/BoxGoal3"), NodePath("Pauseable/BoxGoal4")]
 

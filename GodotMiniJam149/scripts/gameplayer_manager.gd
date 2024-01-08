@@ -101,6 +101,7 @@ func on_spawn_timer_finish():
 	
 	var spawn_time = TimeBetweenBoxSpawn - time_reduction
 	spawn_time = max(spawn_time, SpawnTimeMinimum)
+	print("setting timer for ", spawn_time)
 	spawn_timer.start(spawn_time)
 	
 # gameplay events
@@ -111,10 +112,12 @@ func on_box_spawned(node : Node3D):
 	print("box spawned")
 	
 	if ( boxes_spawned % BoxSpawnIncrementToAdjust == 0):
-		if (boxes_spawned == 1):
+		if (boxes_spawned == BoxSpawnIncrementToAdjust):
 			time_reduction = BeginTimeReductionAmount
 		else:
 			time_reduction *= TimeReductionScale
+			
+		print("time reduction is now ", time_reduction)
 	
 func on_box_expired():
 	increment_strike()
